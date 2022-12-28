@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { data, getData } = useFetch("/api/get-all-users");
+  const { data, loading, getData } = useFetch("/api/get-all-users");
 
   const [filter, setFilter] = useState(0);
 
@@ -68,36 +68,47 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((item, index) => (
-                  <tr
-                    key={index}
-                    className={`${
-                      index % 2 === 0 ? "bg-slate-100" : "bg-slate-200"
-                    }`}
-                  >
-                    <TableData>{item.id}</TableData>
-                    <TableData>{item.email}</TableData>
-                    <TableData>{`${item.firstname} ${item.lastname}`}</TableData>
-                    <TableData>{item.mobile}</TableData>
-                    <TableData>
-                      {item.isApproved ? "Approved" : "Unapproved"}
-                    </TableData>
-                    <TableData>
-                      <div className="flex flex-col gap-y-2 justify-evenly">
-                        <ApproveButton
-                          onClick={() => {
-                            approveUser(item.id);
-                          }}
-                        />
-                        <DissapproveButton
-                          onClick={() => {
-                            disApproveUser(item.id);
-                          }}
-                        />
-                      </div>
-                    </TableData>
+                {loading && (
+                  <tr>
+                    <td
+                      colSpan={6}
+                      className="text-center py-2 font-bold animate-bounce"
+                    >
+                      Loading
+                    </td>
                   </tr>
-                ))}
+                )}
+                {data.length > 0 &&
+                  data.map((item, index) => (
+                    <tr
+                      key={index}
+                      className={`${
+                        index % 2 === 0 ? "bg-slate-100" : "bg-slate-200"
+                      }`}
+                    >
+                      <TableData>{item.id}</TableData>
+                      <TableData>{item.email}</TableData>
+                      <TableData>{`${item.firstname} ${item.lastname}`}</TableData>
+                      <TableData>{item.mobile}</TableData>
+                      <TableData>
+                        {item.isApproved ? "Approved" : "Unapproved"}
+                      </TableData>
+                      <TableData>
+                        <div className="flex flex-col gap-y-2 justify-evenly">
+                          <ApproveButton
+                            onClick={() => {
+                              approveUser(item.id);
+                            }}
+                          />
+                          <DissapproveButton
+                            onClick={() => {
+                              disApproveUser(item.id);
+                            }}
+                          />
+                        </div>
+                      </TableData>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
