@@ -1,8 +1,10 @@
-export const DisApproveButton = ({ onClick, disabled }) => {
+import { Loader } from "../../../Loader";
+
+export const DisApproveButton = ({ onClick, loading }) => {
   return (
     <button
-      disabled={disabled}
-      style={{ width: 120 }}
+      disabled={loading}
+      style={{ width: 120, height: 30 }}
       onClick={onClick}
       className={`
         text-white 
@@ -13,9 +15,10 @@ export const DisApproveButton = ({ onClick, disabled }) => {
         rounded-full 
         transition
         hover:opacity-70
+        flex justify-center items-center
         `}
     >
-      Dissapprove
+      {loading ? <Loader /> : "Disapprove"}
     </button>
   );
 };

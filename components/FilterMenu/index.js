@@ -1,25 +1,19 @@
-import React from "react";
-import { LogoutButton } from "./Components/LogoutButton";
-import { MenuItem } from "./Components/MenuItem";
+import { FilterItem } from "./Components/FilterItem";
 
-export const FilterMenu = ({ filters, selected, setFilter, setUser }) => {
+export const FilterMenu = ({ selected, setFilter, filters }) => {
   return (
-    <div className="bg-slate-100 py-2">
-      <p className="mb-4 text-center text-lg font-bold">Filter</p>
-      <ul className="flex flex-col">
+    <div className="border border-black">
+      <ul className="grid grid-cols-3 place-items-stretch">
         {filters.map((item) => (
           <li key={item.id}>
-            <MenuItem
+            <FilterItem
               selected={selected === item.id}
               onClick={() => setFilter(item.id)}
             >
               {item.name}
-            </MenuItem>
+            </FilterItem>
           </li>
         ))}
-        <li>
-          <LogoutButton setUser={setUser} />
-        </li>
       </ul>
     </div>
   );

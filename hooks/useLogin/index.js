@@ -7,7 +7,6 @@ export const useLogin = () => {
   const [loading, setLoading] = useState(true);
 
   async function checkUser() {
-    console.log("running");
     let user = localStorage.getItem("user");
 
     if (!user) {

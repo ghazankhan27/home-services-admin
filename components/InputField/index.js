@@ -3,7 +3,7 @@ import React from "react";
 export const InputField = ({ label, options }) => {
   return (
     <div>
-      <p className="text-sm font-semibold">{label}</p>
+      <p className="text-xs font-semibold text-slate-600">{label}</p>
       <input
         style={{ width: 220 }}
         className={`
