@@ -1,3 +1,13 @@
+export function getRandomString(length) {
+  let text = "";
+  let possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (let i = 0; i < parseInt(length); i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
 export async function addCategory(obj) {
   try {
     let temp = {
@@ -9,7 +19,7 @@ export async function addCategory(obj) {
 
     for (let key of obj.keys()) {
       if (key !== "Category") {
-        temp.subcategories.push({ id: i, name: obj.get(key) });
+        temp.subcategories.push({ id: getRandomString(6), name: obj.get(key) });
         i += 1;
       }
     }

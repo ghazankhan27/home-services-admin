@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "admin": "github:ghazankhan27/home-services-admin",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
     "firebase": "^9.15.0",

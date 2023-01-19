@@ -57,7 +57,7 @@ export const CategoryForm = ({ getData, setError }) => {
               </div>
             ))}
         </div>
-        <SubmitButton loading={loading} />
+        <SubmitButton onSubmit={()=>{console.log(listOfSubs)}} loading={loading} />
       </form>
     </>
   );
