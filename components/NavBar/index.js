@@ -4,7 +4,7 @@ export const NavBar = () => {
   return (
     <div className="bg-slate-700 py-4 px-8 shadow-md">
       <div>
-        <p className="text-white text-2xl font-bold">Home Services</p>
+        <p className="text-white text-2xl font-bold">Crafty Hands</p>
       </div>
     </div>
   );
